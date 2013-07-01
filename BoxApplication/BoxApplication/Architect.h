@@ -8,6 +8,7 @@ class Architect
 {
 private:
 	list<T> Boxes;	
+
 public:
 	// constructor
 	Architect(list<T>);
@@ -17,5 +18,8 @@ public:
 
 	// determine the best order of the boxes.
 	void stack();
+
+	// function checks boxes stackability
+	T checkStackability(T, T);
 };
 #endif	

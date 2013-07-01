@@ -1,7 +1,14 @@
+// 4
+// 6,3,1
+// 5,1,3
+// 8,4,5
+// 6,7,3
+
 #include <iostream>
 #include <string>
 #include <map>
 #include <list>
+#include <algorithm>
 #include "Box.h"
 #include "Architect.h"
 using std::cout;
@@ -14,13 +21,14 @@ using std::list;
 // function defintions
 unsigned int getNBoxes();
 list<Box> getBoxProperties(unsigned int);
-void getBoxFromString(string, list<Box>*);
+void getBoxFromString(string, list<Box>*, int);
 
 // constants
 const int BOX_PROPERTIES_COUNT = 3;
 const int MAX_BOX_COUNT = 20;
 const int MIN_BOX_COUNT = 1;
 
+template <class T>
 int main() 
 {
 	// get number of boxes.
@@ -93,7 +101,7 @@ list<Box> getBoxProperties(unsigned int N = 1)
 		// read values in as string.
 		cin >> input;
 
-		getBoxFromString(input, &boxes);
+		getBoxFromString(input, &boxes, i);
 	}
 
 	return boxes;
@@ -111,7 +119,7 @@ list<Box> getBoxProperties(unsigned int N = 1)
 //		a pointer because if we have a bad
 //		input string, we just want to 
 //		skip over the box and continue on.
-void getBoxFromString(string input, list<Box>* boxes)
+void getBoxFromString(string input, list<Box>* boxes, int boxCount)
 {
 	int values[BOX_PROPERTIES_COUNT], valuesLength = 0, lastCommaIndex = 0;
 	string::size_type st;
@@ -155,7 +163,7 @@ void getBoxFromString(string input, list<Box>* boxes)
 	}
 
 	// create a box, and add to list.
-	Box box(values[0], values[1], values[2]);
+	Box box(boxCount, values[0], values[1], values[2]);
 
 	boxes->push_back(box);
 }

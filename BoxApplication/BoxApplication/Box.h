@@ -10,7 +10,7 @@ using std::string;
 class Box
 {
 private:
-	int height, width, length;
+	int height, width, length, id;
 
 	// public function to yaw a box.
 	void yawBox();
@@ -23,7 +23,7 @@ private:
 
 public:
 	// constructor
-	Box(int, int, int);
+	Box(int, int, int, int);
 
 	// getter for the height attribute.
 	int getHeight() { return height; }
@@ -33,6 +33,9 @@ public:
 
 	// getter for the length attribute.
 	int getLength() { return length; }
+
+	// getter for the id
+	int getId() { return id; }
 
 	// get all properties as a map.
 	map<string, int> getProperties();
@@ -45,5 +48,7 @@ public:
 
 	// public function to calculate the volume of a box.
 	int calculateVolume();
+
+	bool operator==(const Box A);
 };
 #endif

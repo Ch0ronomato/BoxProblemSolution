@@ -5,8 +5,9 @@
 using std::map;
 using std::string;
 
-Box::Box(int _length, int _width, int _height)
+Box::Box(int _id, int _length, int _width, int _height)
 {
+	id = _id;
 	height = _height;
 	length = _length;
 	width = _width;
@@ -102,6 +103,11 @@ bool Box::transformBox(BoxRotationType rot)
 	}
 
 	return true;
+}
+
+bool Box::operator==(Box A)
+{
+	return A.getId() == id;
 }
 
 int Box::calculateArea()
